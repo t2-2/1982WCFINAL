@@ -9,17 +9,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,900&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f7f1e3;
-    --bg-2:#efe6cf;
-    --panel:#fffcf5;
-    --ink:#1c2129;
-    --ink-dim:#6b6252;
-    --gold:#a9812f;
-    --gold-bright:#c99a3b;
-    --azzurro:#0b4f8a;
-    --azzurro-deep:#0a3a63;
-    --hairline:rgba(28,33,41,.14);
-    --shadow-deep: 0 30px 70px rgba(30,25,10,.20);
+    --bg:#0a0a0b;
+    --bg-2:#111113;
+    --panel:#16161a;
+    --ink:#f4efe4;
+    --ink-dim:#a8a297;
+    --gold:#c9a961;
+    --gold-bright:#e8c87a;
+    --azzurro:#3d8fd1;
+    --azzurro-deep:#7fbcf0;
+    --hairline:rgba(201,169,97,.16);
+    --shadow-deep: 0 30px 80px rgba(0,0,0,.55);
     --ease: cubic-bezier(.16,.84,.44,1);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -49,16 +49,16 @@
   .wrap{max-width:1100px; margin-inline:auto; padding-inline:24px;}
   @media(min-width:768px){.wrap{padding-inline:48px;}}
 
-  .grain{position:fixed; inset:0; pointer-events:none; z-index:2; opacity:.035; mix-blend-mode:multiply;
+  .grain{position:fixed; inset:0; pointer-events:none; z-index:2; opacity:.05; mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   /* ---------- Language switcher ---------- */
   .langbar{position:fixed; top:0; inset-inline:0; z-index:50; display:flex; justify-content:center; padding:14px 16px; pointer-events:none;}
   .langbar-inner{
-    pointer-events:auto; display:flex; gap:2px; background:rgba(255,252,245,.82);
+    pointer-events:auto; display:flex; gap:2px; background:rgba(10,10,11,.72);
     border:1px solid var(--hairline); border-radius:100px; padding:4px;
-    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); box-shadow:0 6px 20px rgba(30,25,10,.08);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); box-shadow:none;
   }
   .langbtn{
     appearance:none; border:none; background:transparent; color:var(--ink-dim);
@@ -74,9 +74,9 @@
   .topmenu{position:fixed; top:0; inset-inline:0; z-index:40; display:flex; justify-content:space-between; align-items:center; padding:16px 16px 0; pointer-events:none;}
   .menu-toggle{
     pointer-events:auto; width:44px; height:44px; border-radius:50%;
-    background:rgba(255,252,245,.82); border:1px solid var(--hairline);
+    background:rgba(10,10,11,.72); border:1px solid var(--hairline);
     backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-    display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 20px rgba(30,25,10,.08);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:none;
   }
   .menu-toggle span, .menu-toggle::before, .menu-toggle::after{content:''; position:absolute; width:16px; height:1px; background:var(--azzurro-deep);}
   .menu-toggle::before{transform:translateY(-4px);}
@@ -84,7 +84,7 @@
   .menu-toggle span{display:block;}
 
   .menu-panel{
-    position:fixed; inset:0; z-index:45; background:rgba(247,241,227,.98);
+    position:fixed; inset:0; z-index:45; background:rgba(6,6,7,.97);
     backdrop-filter:blur(20px);
     display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
     gap:6px; padding:0 40px;
@@ -103,7 +103,9 @@
   .hero{position:relative; min-height:100svh; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; padding-bottom:56px; padding-top:120px;}
   .hero-vignette{
     position:absolute; inset:0; pointer-events:none;
-    background: radial-gradient(ellipse 70% 45% at 50% 20%, rgba(11,79,138,.06), transparent 60%);
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 30%, transparent 0%, rgba(10,10,11,.15) 55%, var(--bg) 100%),
+      linear-gradient(to bottom, rgba(10,10,11,.5) 0%, transparent 20%, transparent 60%, var(--bg) 100%);
   }
   .hero-content{position:relative; z-index:5; text-align:center;}
   .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--azzurro); margin-bottom:18px; opacity:0;}
@@ -141,7 +143,7 @@
   .lang-he .kicker{letter-spacing:0; text-transform:none;}
   .kicker::after{content:''; flex:1; height:1px; background:var(--hairline);}
   .section-title{font-size:clamp(28px,4.6vw,44px); line-height:1.08; margin-bottom:14px;}
-  .lede{max-width:640px; font-size:16.5px; line-height:1.8; color:#3a3527;}
+  .lede{max-width:640px; font-size:16.5px; line-height:1.8; color:#d8d2c4;}
   hr.hairline{border:none; border-top:1px solid var(--hairline); margin:0;}
 
   /* Match facts plaque */
@@ -155,7 +157,7 @@
 
   /* Story / description */
   .story{max-width:680px; margin-inline:auto; text-align:center;}
-  .story p{font-size:17px; line-height:1.9; color:#3a3527;}
+  .story p{font-size:17px; line-height:1.9; color:#d8d2c4;}
   .story .quote-mark{font-family:'Fraunces', serif; font-size:52px; color:var(--gold); line-height:1; opacity:.8;}
 
   /* Video */
@@ -169,9 +171,19 @@
 
   /* Gallery — sequential, tilt */
   .gallery-grid{display:flex; flex-direction:column; gap:56px; max-width:600px; margin-inline:auto; perspective:1200px;}
-  .plate{position:relative; overflow:hidden; border:1px solid var(--hairline); background:var(--panel); opacity:0; transform:translateY(24px); transform-style:preserve-3d; will-change:transform; box-shadow:0 20px 50px rgba(30,25,10,.10);}
+  .plate{position:relative; overflow:hidden; border:1px solid var(--hairline); background:var(--panel); opacity:0; transform:translateY(24px); transform-style:preserve-3d; will-change:transform; box-shadow:var(--shadow-deep);}
   .plate img{width:100%; height:auto; display:block;}
-  .plate-tag{position:absolute; top:10px; inset-inline-start:10px; z-index:2; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.05em; background:rgba(255,252,245,.88); color:var(--azzurro-deep); padding:5px 10px; border:1px solid var(--hairline);}
+  .plate-tag{position:absolute; top:10px; inset-inline-start:10px; z-index:2; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.05em; background:rgba(10,10,11,.78); color:var(--gold-bright); padding:5px 10px; border:1px solid var(--hairline);}
+
+  /* Last plate — rotated to landscape, dark museum-black frame (matches the Ronaldo page) */
+  .plate.plate-dark{background:#0a0a0b; border-color:rgba(201,169,97,.25); box-shadow:0 24px 60px rgba(0,0,0,.5);}
+  .plate.plate-dark .plate-tag{background:rgba(10,10,11,.85); color:#e8c87a; border-color:rgba(201,169,97,.3);}
+  .plate.plate-rotate{position:relative; aspect-ratio:4/3; overflow:hidden;}
+  .plate.plate-rotate img{
+    position:absolute; top:50%; left:50%; width:auto; height:auto;
+    min-width:145%; min-height:145%; object-fit:cover;
+    transform:translate(-50%,-50%) rotate(-90deg);
+  }
 
   footer{padding:48px 0 40px; text-align:center;}
   .footer-text{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); letter-spacing:.05em;}
@@ -322,7 +334,7 @@ en:{
   videoLabel:'III. Watch', videoTitle:'Highlights — The 1982 Final',
   galleryLabel:'IV. Exhibit Plates',
   footer:'SANTIAGO BERNABÉU · MADRID · 11 JULY 1982',
-  footerRights:'© All Rights Reserved — ITAY SAAD'
+  footerRights:'© All Rights Reserved — Itay Saad'
 },
 es:{
   dir:'ltr', bodyClass:'lang-es',
@@ -343,7 +355,7 @@ es:{
   videoLabel:'III. Ver', videoTitle:'Resumen — La Final de 1982',
   galleryLabel:'IV. Placas de Exhibición',
   footer:'SANTIAGO BERNABÉU · MADRID · 11 DE JULIO DE 1982',
-  footerRights:'© Todos los derechos reservados — ITAY SAAD'
+  footerRights:'© Todos los derechos reservados — Itay Saad'
 },
 he:{
   dir:'rtl', bodyClass:'lang-he',
@@ -391,8 +403,9 @@ function renderFacts(list){
 
 function renderGallery(){
   const wrap = document.getElementById('galleryGrid');
+  const last = GALLERY_IMAGES.length - 1;
   wrap.innerHTML = GALLERY_IMAGES.map((src,i)=>`
-    <figure class="plate" data-reveal>
+    <figure class="plate${i===last ? ' plate-rotate' : ''}" data-reveal>
       <span class="plate-tag mono">${String(i+1).padStart(2,'0')} / ${String(GALLERY_IMAGES.length).padStart(2,'0')}</span>
       <img src="${src}" alt="1982 World Cup final ball — exhibit plate ${i+1}" loading="lazy">
     </figure>`).join('');
@@ -578,7 +591,7 @@ gsap.timeline({delay:.3})
     speeds[i] = 0.12 + Math.random()*0.3;
   }
   geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
-  const mat = new THREE.PointsMaterial({color:0xa9812f, size:0.026, transparent:true, opacity:0.4, sizeAttenuation:true});
+  const mat = new THREE.PointsMaterial({color:0xc9a961, size:0.026, transparent:true, opacity:0.4, sizeAttenuation:true});
   const points = new THREE.Points(geo, mat);
   scene.add(points);
   scene.add(new THREE.AmbientLight(0xffffff, 0.4));
