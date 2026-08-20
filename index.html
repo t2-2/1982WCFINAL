@@ -169,6 +169,14 @@
   .video-ratio iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
   .video-caption{display:flex; justify-content:space-between; margin-top:10px; font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--ink-dim); padding:0 2px;}
 
+  .video2-title{
+    text-align:center; font-size:clamp(20px,3vw,26px); color:var(--gold-bright);
+    margin:56px 0 0;
+  }
+  .video-frame-portrait{max-width:300px;}
+  .video-ratio-portrait{position:relative; width:100%; aspect-ratio:269/476; overflow:hidden; border-radius:2px;}
+  .video-ratio-portrait iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+
   /* Gallery — sequential, tilt */
   .gallery-grid{display:flex; flex-direction:column; gap:56px; max-width:600px; margin-inline:auto; perspective:1200px;}
   .plate{position:relative; overflow:hidden; border:1px solid var(--hairline); background:var(--panel); opacity:0; transform:translateY(24px); transform-style:preserve-3d; will-change:transform; box-shadow:var(--shadow-deep);}
@@ -178,10 +186,9 @@
   /* Last plate — rotated to landscape, dark museum-black frame (matches the Ronaldo page) */
   .plate.plate-dark{background:#0a0a0b; border-color:rgba(201,169,97,.25); box-shadow:0 24px 60px rgba(0,0,0,.5);}
   .plate.plate-dark .plate-tag{background:rgba(10,10,11,.85); color:#e8c87a; border-color:rgba(201,169,97,.3);}
-  .plate.plate-rotate{position:relative; aspect-ratio:4/3; overflow:hidden;}
+  .plate.plate-rotate{position:relative; overflow:hidden;}
   .plate.plate-rotate img{
-    position:absolute; top:50%; left:50%; width:auto; height:auto;
-    min-width:145%; min-height:145%; object-fit:cover;
+    position:absolute; top:50%; left:50%; max-width:none;
     transform:translate(-50%,-50%) rotate(-90deg);
   }
 
@@ -202,7 +209,7 @@
 <div class="langbar">
   <div class="langbar-inner" role="group" aria-label="Language">
     <button class="langbtn active" data-lang="en" aria-pressed="true">EN</button>
-    <button class="langbtn" data-lang="es" aria-pressed="false">ES</button>
+    <button class="langbtn" data-lang="it" aria-pressed="false">IT</button>
     <button class="langbtn" data-lang="he" aria-pressed="false">HE</button>
   </div>
 </div>
@@ -282,6 +289,16 @@
         <span>ITA 3–1 FRG</span>
       </div>
     </div>
+
+    <h3 class="video2-title display" data-i18n="video2Title"></h3>
+    <div class="video-frame video-frame-portrait reveal">
+      <div class="video-ratio-portrait">
+        <iframe id="fbVideo" src="" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      </div>
+      <div class="video-caption mono">
+        <span data-i18n="video2Caption"></span>
+      </div>
+    </div>
   </section>
 
   <hr class="hairline">
@@ -293,6 +310,7 @@
     </div>
     <div class="gallery-grid" id="galleryGrid"></div>
   </section>
+
 
   <footer>
     <p class="footer-text" data-i18n="footer"></p>
@@ -330,32 +348,34 @@ en:{
     {label:'Signatures', value:'Full Italy national team squad'}
   ],
   storyLabel:'II. The Story', storyTitle:'A Piece of the Final',
-  storyText:'This is one of three official match balls that touched the turf of the Santiago Bernabéu in Madrid on 11 July 1982 — the day Italy defeated West Germany 3–1 to lift their third FIFA World Cup title. Every member of the victorious Azzurri squad has signed the ball, making it an exceptionally rare artifact from one of football\u2019s most iconic finals.',
+  storyText:'This is one of three official match balls that touched the turf of the Santiago Bernabéu in Madrid on 11 July 1982 — the day Italy defeated West Germany 3–1 to lift their third FIFA World Cup title. Every member of the victorious Azzurri squad has signed the ball, making it an exceptionally rare artifact from one of football’s most iconic finals.',
   videoLabel:'III. Watch', videoTitle:'Highlights — The 1982 Final',
+  video2Title:'In Their Own Words', video2Caption:'AZZURRI 1982 · FEATURE',
   galleryLabel:'IV. Exhibit Plates',
   footer:'SANTIAGO BERNABÉU · MADRID · 11 JULY 1982',
   footerRights:'© All Rights Reserved — Itay Saad'
 },
-es:{
-  dir:'ltr', bodyClass:'lang-es',
-  nav:{facts:'Datos del Partido', story:'La Historia', video:'Ver', gallery:'Galería'},
-  hero:{eyebrow:'Pieza de Colección Oficial de Museo', title:'Final del Mundial 1982', titleSub:'El Balón del Partido',
-    subtitle:'Uno de los tres balones oficiales utilizados en el campo de Madrid el 11 de julio de 1982 — firmado por todos los jugadores de la selección de Italia.'},
-  factsLabel:'I. Datos del Partido', factsTitle:'La Final',
+it:{
+  dir:'ltr', bodyClass:'lang-it',
+  nav:{facts:'Dati della Partita', story:'La Storia', video:'Guarda', gallery:'Galleria'},
+  hero:{eyebrow:'Pezzo da Collezione Ufficiale del Museo', title:'Finale Mondiale 1982', titleSub:'Il Pallone della Partita',
+    subtitle:'Uno dei tre palloni ufficiali utilizzati sul campo di Madrid l’ 11 luglio 1982 — firmato da tutti i giocatori della Nazionale italiana.'},
+  factsLabel:'I. Dati della Partita', factsTitle:'La Finale',
   facts:[
-    {label:'Fecha', value:'11 de julio de 1982'},
-    {label:'Partido', value:'Italia vs. Alemania Occidental'},
+    {label:'Data', value:'11 luglio 1982'},
+    {label:'Partita', value:'Italia vs. Germania Ovest'},
     {label:'Sede', value:'Santiago Bernabéu, Madrid'},
-    {label:'Resultado', value:'Italia 3–1 Alemania Occidental'},
-    {label:'Estado del Balón', value:'Uno de tres balones oficiales'},
-    {label:'Firmas', value:'Plantilla completa de Italia'}
+    {label:'Risultato', value:'Italia 3–1 Germania Ovest'},
+    {label:'Stato del Pallone', value:'Uno di tre palloni ufficiali'},
+    {label:'Firme', value:'Intera rosa della Nazionale italiana'}
   ],
-  storyLabel:'II. La Historia', storyTitle:'Una Pieza de la Final',
-  storyText:'Este es uno de los tres balones oficiales que tocó el césped del Santiago Bernabéu en Madrid el 11 de julio de 1982 — el día en que Italia venció a Alemania Occidental 3–1 para conquistar su tercera Copa del Mundo. Cada miembro de la Azzurri campeona firmó el balón, lo que lo convierte en una pieza excepcionalmente rara de una de las finales más icónicas del fútbol.',
-  videoLabel:'III. Ver', videoTitle:'Resumen — La Final de 1982',
-  galleryLabel:'IV. Placas de Exhibición',
-  footer:'SANTIAGO BERNABÉU · MADRID · 11 DE JULIO DE 1982',
-  footerRights:'© Todos los derechos reservados — Itay Saad'
+  storyLabel:'II. La Storia', storyTitle:'Un Frammento della Finale',
+  storyText:'Questo è uno dei tre palloni ufficiali che ha toccato il prato del Santiago Bernabéu a Madrid l’ 11 luglio 1982 — il giorno in cui l’Italia sconfisse la Germania Ovest 3–1 conquistando il suo terzo titolo mondiale. Ogni membro della rosa vincente degli Azzurri ha firmato il pallone, rendendolo un cimelio straordinariamente raro di una delle finali più iconiche del calcio.',
+  videoLabel:'III. Guarda', videoTitle:'Highlights — La Finale del 1982',
+  video2Title:'Nel Racconto dei Protagonisti', video2Caption:'AZZURRI 1982 · SPECIALE',
+  galleryLabel:'IV. Tavole in Mostra',
+  footer:'SANTIAGO BERNABÉU · MADRID · 11 LUGLIO 1982',
+  footerRights:'© Tutti i diritti riservati — Itay Saad'
 },
 he:{
   dir:'rtl', bodyClass:'lang-he',
@@ -374,11 +394,15 @@ he:{
   storyLabel:'II. הסיפור', storyTitle:'פרגמנט מהגמר',
   storyText:'זהו אחד משלושה כדורים רשמיים שנגעו בדשא הסנטיאגו ברנבאו במדריד ב-11 ביולי 1982 — היום בו איטליה ניצחה את מערב גרמניה 3–1 וזכתה בתואר המונדיאל השלישי שלה. כל שחקני נבחרת איטליה המנצחת חתמו על הכדור, מה שהופך אותו לפריט נדיר במיוחד מאחד הגמרים האייקוניים ביותר בהיסטוריית הכדורגל.',
   videoLabel:'III. צפייה', videoTitle:'רגעי שיא — הגמר של 1982',
+  video2Title:'בסיפורם של השחקנים', video2Caption:'האצורי 1982 · כתבה',
   galleryLabel:'IV. לוחות תצוגה',
   footer:'סנטיאגו ברנבאו · מדריד · 11 ביולי 1982',
   footerRights:'© כל הזכויות שמורות לאיתי סעד'
 }
 };
+
+const FB_VIDEO_HE = "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fytysd%2Fvideos%2F609540195267681%2F%3Fidorvanity%3D380855335708467&show_text=false&width=269&t=0";
+const FB_VIDEO_EN = "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fytysd%2Fvideos%2F506439512487209%2F%3Fidorvanity%3D380855335708467&show_text=false&width=269&t=0";
 
 const GALLERY_IMAGES = [
   "https://scontent.ftlv19-3.fna.fbcdn.net/v/t39.30808-6/504078826_2483839075296182_4730720304879076072_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=107&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=wL0stJJEBDsQ7kNvwH_u9rL&_nc_oc=AdrjctcHN-w2LBqSYCQOZvKTs1ohfc_ooWcFEoOM_h3DzKTTXalQ9iW1DpkJCun2zSbOR-C3AzEAXiAIqvBIWfG9&_nc_zt=23&_nc_ht=scontent.ftlv19-3.fna&_nc_gid=NypZm5I4iFy4LXCk9YhTPw&_nc_ss=7b2a8&oh=00_AQHkfFBx5rvEKtOQJFPgZdXXB03iHXp3aEQYuGKAYqO2cA&oe=6A8BD46B",
@@ -409,6 +433,24 @@ function renderGallery(){
       <span class="plate-tag mono">${String(i+1).padStart(2,'0')} / ${String(GALLERY_IMAGES.length).padStart(2,'0')}</span>
       <img src="${src}" alt="1982 World Cup final ball — exhibit plate ${i+1}" loading="lazy">
     </figure>`).join('');
+
+  const rotatedFigure = wrap.querySelector('.plate-rotate');
+  if(rotatedFigure) setupRotatedPlate(rotatedFigure);
+}
+
+/* Size a rotated plate so the full image shows with no cropping and no distortion */
+function setupRotatedPlate(figure){
+  const img = figure.querySelector('img');
+  function apply(){
+    const nw = img.naturalWidth, nh = img.naturalHeight;
+    if(!nw || !nh) return;
+    figure.style.aspectRatio = `${nh} / ${nw}`;
+    const w = figure.getBoundingClientRect().width;
+    if(w > 0){ img.style.height = w + 'px'; img.style.width = 'auto'; }
+  }
+  if(img.complete && img.naturalWidth) apply();
+  img.addEventListener('load', apply);
+  window.addEventListener('resize', apply);
 }
 
 let currentLang = 'en';
@@ -445,6 +487,13 @@ function applyLang(lang){
 
   setText('videoLabel', c.videoLabel);
   setText('videoTitle', c.videoTitle);
+  setText('video2Title', c.video2Title);
+  setText('video2Caption', c.video2Caption);
+  const fbVideo = document.getElementById('fbVideo');
+  if(fbVideo){
+    const targetSrc = lang === 'he' ? FB_VIDEO_HE : FB_VIDEO_EN;
+    if(fbVideo.getAttribute('src') !== targetSrc) fbVideo.setAttribute('src', targetSrc);
+  }
 
   setText('galleryLabel', c.galleryLabel);
   renderGallery();
